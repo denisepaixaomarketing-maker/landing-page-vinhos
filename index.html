@@ -1,88 +1,240 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinhos Premium - Descubra Nossos Sabores</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo">🍷 Vinhos Premium</div>
-                <ul class="nav-menu">
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#vinhos">Nossos Vinhos</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </div>
-        </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Landing page para uma noite de degustação de vinhos com hero editorial, botões definidos e movimentos suaves no scroll."
+    />
+    <title>Vinha Noite | Degustação de Vinhos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.pexels.com/photos/14183029/pexels-photo-14183029.jpeg?auto=compress&cs=tinysrgb&w=1800"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Vinha Noite">
+        <span>Vinha</span>
+        <span>Noite</span>
+      </a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="#experiencia">Experiência</a>
+        <a href="#roteiro">Roteiro</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <a class="nav-cta" href="#contato">Reservar</a>
     </header>
 
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>Descubra os Melhores Vinhos</h1>
-            <p>Seleção premium de vinhos de todo o mundo</p>
-            <button class="cta-button">Explorar Catálogo</button>
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img
+          class="hero__image"
+          src="https://images.pexels.com/photos/14183029/pexels-photo-14183029.jpeg?auto=compress&cs=tinysrgb&w=1800"
+          alt="Mesa elegante preparada com taças de vinho para uma degustação"
+          data-parallax
+          data-speed="-0.12"
+        />
+        <div class="hero__shade" aria-hidden="true"></div>
+        <div class="hero__content">
+          <div class="eyebrow" data-reveal>
+            <span>27 de maio</span>
+            <span>19h às 21h30</span>
+            <span>Resid Wine Room</span>
+          </div>
+          <h1 id="hero-title" data-reveal data-delay="100">
+            <span>Uma noite</span>
+            <span>de vinhos,</span>
+            <span>conversas e</span>
+            <span>descobertas.</span>
+          </h1>
+          <p class="hero__text" data-reveal data-delay="180">
+            Degustação guiada com rótulos selecionados, harmonizações leves e
+            uma experiência intimista para brindar com calma.
+          </p>
+          <div class="hero__actions" data-reveal data-delay="260">
+            <a class="btn btn--primary" href="#contato">
+              <span>Reservar minha vaga</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h12.2l-4.6-4.6L14 6l7 7-7 7-1.4-1.4 4.6-4.6H5z" />
+              </svg>
+            </a>
+            <a class="btn btn--secondary" href="#experiencia">Ver experiência</a>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <section id="vinhos" class="products">
-        <div class="container">
-            <h2>Nossos Vinhos</h2>
-            <div class="wines-grid">
-                <div class="wine-card">
-                    <div class="wine-image">🍷</div>
-                    <h3>Cabernet Sauvignon</h3>
-                    <p class="price">R$ 89,90</p>
-                    <p class="description">Vinho tinto encorpado com notas de frutas vermelhas e especiarias.</p>
-                    <button class="add-cart">Adicionar ao Carrinho</button>
-                </div>
-                <div class="wine-card">
-                    <div class="wine-image">🍾</div>
-                    <h3>Chardonnay</h3>
-                    <p class="price">R$ 79,90</p>
-                    <p class="description">Vinho branco refinado com aromas de frutas brancas e caramelo.</p>
-                    <button class="add-cart">Adicionar ao Carrinho</button>
-                </div>
-                <div class="wine-card">
-                    <div class="wine-image">🍷</div>
-                    <h3>Merlot</h3>
-                    <p class="price">R$ 74,90</p>
-                    <p class="description">Vinho tinto suave com sabor frutado e final sedoso.</p>
-                    <button class="add-cart">Adicionar ao Carrinho</button>
-                </div>
+      <section class="intro section-band" id="experiencia">
+        <div class="section-inner intro__grid">
+          <div class="intro__copy">
+            <p class="section-kicker" data-reveal>A experiência</p>
+            <h2 data-split>Da primeira taça ao último brinde.</h2>
+            <p data-reveal>
+              Uma noite com atmosfera editorial, ritmo visual e informações
+              objetivas para transformar interesse em reserva.
+            </p>
+          </div>
+          <div class="intro__media" data-reveal data-parallax data-speed="0.08">
+            <img
+              src="https://images.pexels.com/photos/8775037/pexels-photo-8775037.jpeg?auto=compress&cs=tinysrgb&w=1400"
+              alt="Mesa sofisticada com garrafas, taças e jantar harmonizado"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="features section-band section-band--wine">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="section-kicker" data-reveal>Incluso na noite</p>
+            <h2 data-split>Um encontro desenhado para ser simples de escolher.</h2>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card" data-reveal>
+              <span>01</span>
+              <h3>Degustação guiada</h3>
+              <p>Condução leve, com contexto sobre origem, estilo e serviço.</p>
+            </article>
+            <article class="feature-card" data-reveal data-delay="80">
+              <span>02</span>
+              <h3>Rótulos selecionados</h3>
+              <p>Uma curadoria enxuta para comparar aromas, corpo e final.</p>
+            </article>
+            <article class="feature-card" data-reveal data-delay="160">
+              <span>03</span>
+              <h3>Harmonização</h3>
+              <p>Petiscos e combinações pensados para valorizar cada taça.</p>
+            </article>
+            <article class="feature-card" data-reveal data-delay="240">
+              <span>04</span>
+              <h3>Vagas limitadas</h3>
+              <p>Formato intimista, com atendimento próximo e tempo para troca.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="image-story" aria-label="Ambiente da degustação">
+        <img
+          src="https://images.pexels.com/photos/3933152/pexels-photo-3933152.jpeg?auto=compress&cs=tinysrgb&w=1400"
+          alt="Taças alinhadas em uma mesa de degustação"
+          data-parallax
+          data-speed="-0.08"
+        />
+        <div class="image-story__content" data-reveal>
+          <p>Degustar e lembrar</p>
+          <h2>O tipo de noite que fica na conversa.</h2>
+        </div>
+      </section>
+
+      <section class="schedule section-band" id="roteiro">
+        <div class="section-inner schedule__grid">
+          <div>
+            <p class="section-kicker" data-reveal>Roteiro</p>
+            <h2 data-split>Do acolhimento à última taça, tudo com cadência.</h2>
+          </div>
+
+          <div class="timeline" aria-label="Roteiro do evento">
+            <div class="timeline__item" data-reveal>
+              <time>19h00</time>
+              <div>
+                <h3>Recepção</h3>
+                <p>Boas-vindas, primeira taça e apresentação da curadoria.</p>
+              </div>
             </div>
+            <div class="timeline__item" data-reveal>
+              <time>19h30</time>
+              <div>
+                <h3>Degustação guiada</h3>
+                <p>Leitura sensorial dos vinhos e conversas sobre terroir.</p>
+              </div>
+            </div>
+            <div class="timeline__item" data-reveal>
+              <time>20h30</time>
+              <div>
+                <h3>Harmonização</h3>
+                <p>Combinações, comparativos e sugestões para servir em casa.</p>
+              </div>
+            </div>
+            <div class="timeline__item" data-reveal>
+              <time>21h15</time>
+              <div>
+                <h3>Último brinde</h3>
+                <p>Encerramento com convite para próximas experiências.</p>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <section id="sobre" class="about">
-        <div class="container">
-            <h2>Sobre Nós</h2>
-            <p>Há mais de 20 anos, nos dedicamos a trazer os melhores vinhos do mundo para sua mesa. Nossa missão é proporcionar experiências únicas através de seleções cuidadosas de vinhedos respeitados internacionalmente.</p>
-        </div>
-    </section>
+      <section class="cta-section section-band section-band--cream" id="contato">
+        <div class="section-inner cta__grid">
+          <div class="cta__copy">
+            <p class="section-kicker" data-reveal>Reserve</p>
+            <h2 data-split>Confirme interesse e receba os detalhes.</h2>
+            <p data-reveal>
+              Preencha seus dados para receber disponibilidade, valor e detalhes
+              da experiência por mensagem.
+            </p>
+          </div>
 
-    <section id="contato" class="contact">
-        <div class="container">
-            <h2>Entre em Contato</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="Seu Nome" required>
-                <input type="email" placeholder="Seu Email" required>
-                <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
-                <button type="submit" class="submit-btn">Enviar</button>
-            </form>
+          <form class="lead-form" data-reveal>
+            <label>
+              <span>Nome</span>
+              <input type="text" name="name" placeholder="Seu nome" required />
+            </label>
+            <label>
+              <span>WhatsApp</span>
+              <input type="tel" name="phone" placeholder="(00) 00000-0000" required />
+            </label>
+            <label>
+              <span>Quantidade de vagas</span>
+              <select name="spots" required>
+                <option value="1">1 vaga</option>
+                <option value="2">2 vagas</option>
+                <option value="3">3 vagas</option>
+                <option value="4">4 vagas</option>
+              </select>
+            </label>
+            <button class="btn btn--primary btn--full" type="submit">
+              <span>Quero reservar</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h12.2l-4.6-4.6L14 6l7 7-7 7-1.4-1.4 4.6-4.6H5z" />
+              </svg>
+            </button>
+            <p class="form-note" data-form-note>
+              Retorno em horário comercial para confirmar disponibilidade.
+            </p>
+          </form>
         </div>
-    </section>
+      </section>
+    </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Vinhos Premium. Todos os direitos reservados.</p>
-        </div>
+    <a class="floating-cta" href="#contato" aria-label="Ir para reserva" data-floating>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.3-1.7c1.7.9 3.7 1.4 5.7 1.4 6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.1-3.4-8.3Zm-8.4 18.3h-.1c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.3 0-5.4 4.4-9.8 9.9-9.8 2.6 0 5.1 1 7 2.9 1.9 1.9 2.9 4.4 2.9 7 0 5.4-4.5 9.8-9.9 9.8Zm5.4-7.3c-.3-.1-1.8-.9-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3Z"
+        />
+      </svg>
+    </a>
+
+    <footer class="site-footer">
+      <p>Vinha Noite - Degustação exclusiva de vinhos.</p>
+      <p>Fotos: Pexels.</p>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
