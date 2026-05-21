@@ -1,0 +1,28 @@
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.env.local
+.env.*.local
+
+# Dependências
+node_modules/
+package-lock.json
+yarn.lock
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Build
+dist/
+build/
+*.log
+
+# Cache
+.cache/
+.eslintcache
