@@ -1,71 +1,96 @@
-// Smooth scrolling para links de navegação
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+const header = document.querySelector("[data-header]");
+const floatingCta = document.querySelector("[data-floating]");
+const progress = document.querySelector(".scroll-progress");
+const revealItems = document.querySelectorAll("[data-reveal]");
+const splitItems = document.querySelectorAll("[data-split]");
+const parallaxItems = document.querySelectorAll("[data-parallax]");
+const form = document.querySelector(".lead-form");
+const formNote = document.querySelector("[data-form-note]");
+
+document.documentElement.classList.add("motion-ready");
+
+splitItems.forEach((item) => {
+  const words = item.textContent.trim().split(/\s+/);
+  item.textContent = "";
+
+  words.forEach((word, index) => {
+    const span = document.createElement("span");
+    span.className = "word";
+    span.textContent = word;
+    span.style.setProperty("--delay", `${index * 42}ms`);
+    item.append(span, document.createTextNode(" "));
+  });
+});
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const delay = entry.target.dataset.delay;
+
+      if (delay) {
+        entry.target.style.setProperty("--delay", `${delay}ms`);
+      }
+
+      entry.target.classList.add("is-visible");
+      revealObserver.unobserve(entry.target);
     });
-});
+  },
+  { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+);
 
-// Adicionar ao carrinho
-document.querySelectorAll('.add-cart').forEach(button => {
-    button.addEventListener('click', function() {
-        const card = this.closest('.wine-card');
-        const wineName = card.querySelector('h3').textContent;
-        const price = card.querySelector('.price').textContent;
-        
-        // Simular adição ao carrinho
-        alert(`${wineName} (${price}) adicionado ao carrinho!`);
-        
-        // Adicionar efeito visual
-        this.textContent = '✓ Adicionado';
-        this.style.backgroundColor = '#4caf50';
-        
-        setTimeout(() => {
-            this.textContent = 'Adicionar ao Carrinho';
-            this.style.backgroundColor = '';
-        }, 2000);
+[...revealItems, ...splitItems].forEach((item) => revealObserver.observe(item));
+
+function updateScrollEffects() {
+  const scrollY = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progressWidth = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+
+  progress.style.width = `${progressWidth}%`;
+  header.classList.toggle("is-scrolled", scrollY > 36);
+  floatingCta.classList.toggle("is-visible", scrollY > window.innerHeight * 0.55);
+
+  parallaxItems.forEach((item) => {
+    const speed = Number(item.dataset.speed || 0);
+    const rect = item.getBoundingClientRect();
+    const viewportCenter = window.innerHeight / 2;
+    const itemCenter = rect.top + rect.height / 2;
+    const offset = (itemCenter - viewportCenter) * speed;
+
+    item.style.transform = `translate3d(0, ${offset}px, 0) scale(1.03)`;
+  });
+}
+
+let ticking = false;
+
+window.addEventListener(
+  "scroll",
+  () => {
+    if (ticking) return;
+
+    window.requestAnimationFrame(() => {
+      updateScrollEffects();
+      ticking = false;
     });
-});
 
-// Submissão do formulário de contato
-document.querySelector('.contact-form')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = this.querySelector('input[type="text"]').value;
-    const email = this.querySelector('input[type="email"]').value;
-    const message = this.querySelector('textarea').value;
-    
-    // Validação básica
-    if (name && email && message) {
-        alert(`Obrigado, ${name}! Recebemos sua mensagem e responderemos em breve.`);
-        this.reset();
-    } else {
-        alert('Por favor, preencha todos os campos.');
-    }
-});
+    ticking = true;
+  },
+  { passive: true }
+);
 
-// Efeito de entrada dos elementos ao scroll
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-});
+window.addEventListener("resize", updateScrollEffects);
+updateScrollEffects();
 
-// Observar cards ao scroll
-document.querySelectorAll('.wine-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'all 0.6s ease';
-    observer.observe(card);
-});
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-console.log('Landing page de vinhos carregada com sucesso!');
+  const data = new FormData(form);
+  const name = data.get("name");
+  const phone = data.get("phone");
+  const spots = data.get("spots");
+  const message = `Olá, meu nome é ${name}. Tenho interesse em reservar ${spots} vaga(s) para a Vinha Noite. Meu WhatsApp: ${phone}.`;
+  const encodedMessage = encodeURIComponent(message);
+
+  formNote.textContent = "Abrindo mensagem para confirmar sua reserva...";
+  window.open(`https://wa.me/?text=${encodedMessage}`, "_blank", "noopener,noreferrer");
+});
